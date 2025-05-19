@@ -1,0 +1,28 @@
+{
+    "name": "remig26/php-openlibrary",
+    "description": "API Wrapper of OpenLibrary",
+    "type": "library",
+    "autoload": {
+        "psr-4": {
+            "PhpOpenlibrary\\": "src/",
+            "Tests\\": "tests/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Remi Gavin",
+            "email": "remi.gavin38@gmail.com"
+        }
+    ],
+    "require": {
+        "guzzlehttp/guzzle": "^7.0"
+    },
+    "require-dev": {
+        "pestphp/pest": "^3.8"
+    },
+    "config": {
+        "allow-plugins": {
+            "pestphp/pest-plugin": true
+        }
+    }
+}
