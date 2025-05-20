@@ -10,7 +10,7 @@ use Psr\Http\Message\ResponseInterface;
  * @param ResponseInterface[] $responses
  * @return Client
  */
-function getLib(array $responses)
+function getFakeClient(array $responses)
 {
     $mock = new MockHandler($responses);
     $handlerStack = HandlerStack::create($mock);

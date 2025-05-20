@@ -10,7 +10,7 @@ class Book extends Model {
 
     protected int $first_publish_year;
 
-    protected float $ratings_average;
+    protected float $ratings_sortable;
 
     /**
      * @var Author[]
@@ -30,7 +30,7 @@ class Book extends Model {
     }
 
     public function getRatings(): float|null {
-        return $this->ratings_average ?? null;
+        return $this->ratings_sortable ?? null;
     }
 
     public function getAuthors(): array {

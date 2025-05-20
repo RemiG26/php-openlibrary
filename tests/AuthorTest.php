@@ -7,7 +7,7 @@ use PhpOpenlibrary\Models\Book;
 use PhpOpenlibrary\OpenLibrary;
 use function GuzzleHttp\json_encode;
 
-it('Can retrieve and author', function () {
+it('can retrieve and author', function () {
     $authorJson = [
         "name" => "Franck Thilliez",
         "bio" => "Biographie",
@@ -30,7 +30,7 @@ it('Can retrieve and author', function () {
         ],
         "revision" => 1
     ];
-    $lib = new OpenLibrary(getLib([
+    $lib = new OpenLibrary([], getFakeClient([
         new Response(200, [], json_encode($authorJson))
     ]));
     $author = $lib->findAuthor('OL6978429A');
@@ -43,8 +43,8 @@ it('Can retrieve and author', function () {
     expect(value: $author->getCover())->toBe("https://covers.openlibrary.org/b/id/5543033-M.jpg?default=false");
 });
 
-it('Can list books of an author', function () {
-    $lib = new OpenLibrary(getLib([
+it('can list books of an author', function () {
+    $lib = new OpenLibrary([], getFakeClient([
         new Response(200, [], json_encode([
             "docs" => [getJsonBook("OL17885396W"), getJsonBook("OL17885396Z")]
         ]))
@@ -55,8 +55,8 @@ it('Can list books of an author', function () {
     expect($books[0])->toBeInstanceOf(Book::class);
 });
 
-it("Throw exception if API returned an error", function () {
-    $lib = new OpenLibrary(getLib([
+it("throws exception if API returned an error", function () {
+    $lib = new OpenLibrary([], getFakeClient([
         new Response(422, [], ""),
         new Response(422, [], "")
     ]));
